@@ -2,6 +2,8 @@
 en
 conf t
 !
+ip routing
+!
 vlan 10
 vlan 20
 vlan 30
