@@ -1,0 +1,32 @@
+! Cisco 891FJ
+en
+conf t
+!
+vlan 10
+vlan 20
+vlan 30
+!
+interface vlan 10
+ip address 172.16.10.254 255.255.255.0
+no shutdown
+!
+interface vlan 20
+ip address 172.16.20.254 255.255.255.0
+no shutdown
+!
+interface vlan 30
+ip address 172.16.30.254 255.255.255.0
+no shutdown
+!
+interface GigabitEthernet 0
+switchport mode trunk
+switchport trunk encapsulation dot1q
+switchport nonegotiate
+no shutdown
+!
+interface GigabitEthernet 4
+switchport mode trunk
+switchport trunk encapsulation dot1q
+switchport nonegotiate
+no shutdown
+!
