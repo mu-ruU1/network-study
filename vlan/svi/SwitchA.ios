@@ -9,7 +9,7 @@ vlan 30
 interface GigabitEthernet 4
 switchport mode trunk
 switchport trunk encapsulation dot1q
-switchport nonegotiate
+! switchport nonegotiate
 no shutdown
 !
 interface GigabitEthernet 1
@@ -26,4 +26,6 @@ interface GigabitEthernet 3
 switchport mode access
 switchport access vlan 30
 no shutdown
+!
+end
 !

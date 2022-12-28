@@ -21,12 +21,14 @@ no shutdown
 interface GigabitEthernet 0
 switchport mode trunk
 switchport trunk encapsulation dot1q
-switchport nonegotiate
+! switchport nonegotiate
 no shutdown
 !
 interface GigabitEthernet 4
 switchport mode trunk
 switchport trunk encapsulation dot1q
-switchport nonegotiate
+! switchport nonegotiate
 no shutdown
+!
+end
 !
