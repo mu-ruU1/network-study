@@ -1,0 +1,37 @@
+! Cisco 891FJ
+en
+conf t
+!
+ip routing
+!
+vlan 10
+vlan 20
+vlan 30
+!
+interface GigabitEthernet 8.10
+encapsulation dot1q 10
+ip address 172.16.10.254 255.255.255.0
+!
+interface GigabitEthernet 8.20
+encapsulation dot1q 20
+ip address 172.16.20.254 255.255.255.0
+!
+interface GigabitEthernet 8.30
+encapsulation dot1q 30
+ip address 172.16.30.254 255.255.255.0
+!
+service dhcp
+ip dhcp pool VLAN10
+network 172.16.10.0 255.255.255.0
+default-router 172.16.10.254
+!
+ip dhcp pool VLAN20
+network 172.16.20.0 255.255.255.0
+default-router 172.16.20.254
+!
+ip dhcp pool VLAN30
+network 172.16.30.0 255.255.255.0
+default-router 172.16.30.254
+!
+end
+!
