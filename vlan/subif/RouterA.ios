@@ -11,14 +11,32 @@ vlan 30
 interface GigabitEthernet 8.10
 encapsulation dot1q 10
 ip address 172.16.10.254 255.255.255.0
+no shutdown
 !
 interface GigabitEthernet 8.20
 encapsulation dot1q 20
 ip address 172.16.20.254 255.255.255.0
+no shutdown
 !
 interface GigabitEthernet 8.30
 encapsulation dot1q 30
 ip address 172.16.30.254 255.255.255.0
+no shutdown
+!
+interface FastEthernet 0.10
+encapsulation dot1q 10
+ip address 172.16.10.254 255.255.255.0
+no shutdown
+!
+interface FastEthernet 0.20
+encapsulation dot1q 20
+ip address 172.16.20.254 255.255.255.0
+no shutdown
+!
+interface FastEthernet 0.30
+encapsulation dot1q 30
+ip address 172.16.30.254 255.255.255.0
+no shutdown
 !
 service dhcp
 ip dhcp pool VLAN10
