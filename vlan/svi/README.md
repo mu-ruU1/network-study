@@ -1,5 +1,7 @@
 # SVI
 
+![トポロジ](./topology.drawio.svg)
+
 ## 参考
 
 - [SVI](https://www.infraexpert.com/study/vlanz15.html)
