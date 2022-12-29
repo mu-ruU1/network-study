@@ -1,0 +1,12 @@
+! Cisco 891FJ
+en
+conf t
+!
+ip routing
+!
+
+
+
+!
+end
+!
