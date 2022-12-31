@@ -1,0 +1,22 @@
+! Cisco 891FJ
+en
+conf t
+!
+ip routing
+!
+interface FastEthernet 0
+ip address 172.16.30.2 255.255.255.0
+no shutdown
+!
+interface GigabitEthernet 8
+ip address 172.16.40.254 255.255.255.0
+no shutdown
+!
+router rip
+!
+network 172.16.30.0
+network 172.16.40.0
+version 2
+!
+end
+!
