@@ -1,4 +1,4 @@
-# Static Routing
+# Dynamic Routing (RIP)
 
 ![トポロジ](./topology.drawio.svg)
 
