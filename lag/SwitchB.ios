@@ -1,0 +1,6 @@
+! Cisco 891FJ
+en
+conf t
+!
+interface range GigabitEthernet 0 - 1
+channel-group 1 mode active
