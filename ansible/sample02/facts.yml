@@ -1,0 +1,14 @@
+- name: プレイブックを実行する
+  hosts: all
+  gather_facts: no
+  connection: ansible.netcommon.network_cli
+  become: yes
+
+  tasks:
+    - name: ファクト変数を収集
+      cisco.ios.ios_facts:
+        gather_subset: all
+
+    - name: ファクト変数を表示
+      ansible.builtin.debug:
+        msg: "ルーター {{ ansible_facts['net_model'] }} ホスト名 {{ ansible_facts['net_hostname'] }} の IOS Version は {{ ansible_facts['net_version'] }} です。"
