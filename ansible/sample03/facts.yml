@@ -1,0 +1,9 @@
+- name: ファクト変数を収集するテスト
+  hosts: all
+  gather_facts: yes # 不要
+  connection: ansible.netcommon.network_cli
+
+  tasks:
+    - name: ファクト変数を表示
+      ansible.builtin.debug:
+        var: ansible_facts
