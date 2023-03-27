@@ -25,6 +25,7 @@ enable password admin
 !
 line vty 0 4
 login local
+transport input ssh
 !
 ip domain-name example.com
 !

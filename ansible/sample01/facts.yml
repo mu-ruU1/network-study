@@ -1,0 +1,10 @@
+- name: ホスト名を変更する
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: ホスト名を更新
+      cisco.ios.ios_config:
+        backup: yes
+        lines:
+          - hostname Router1
