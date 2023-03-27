@@ -46,7 +46,14 @@ Host 192.168.255.*
   PubkeyAcceptedAlgorithms +ssh-rsa
 ```
 
+## プレイブックの実行
+
+```bash
+ansible-playbook -i hosts.yml facts.yml
+```
+
 ## 参考
 
 - [Ansible Core Documentation](https://docs.ansible.com/core-translated-ja.html)
 - [Ansible - Cisco.Ios](https://docs.ansible.com/ansible/latest/collections/cisco/ios/index.html#plugins-in-cisco-ios)
+- [Ansible - ネットワークの自動化](https://zenn.dev/y_mrok/books/ansible-networrk-no-jidoka)
