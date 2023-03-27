@@ -1,0 +1,15 @@
+- name: showコマンドを実行
+  hosts: all
+  gather_facts: no
+
+  tasks:
+    - name: ファクト変数を表示
+      cisco.ios.ios_command:
+        commands:
+          - show interfaces GigabitEthernet 8
+          - show ip route
+      register: result
+
+    - name: 結果を表示
+      ansible.builtin.debug:
+        var: result
