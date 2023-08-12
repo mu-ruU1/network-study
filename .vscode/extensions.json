@@ -1,3 +1,7 @@
 {
-  "recommendations": ["jamiewoodio.cisco", "hediet.vscode-drawio"]
+  "recommendations": [
+    "jamiewoodio.cisco",
+    "hediet.vscode-drawio",
+    "esbenp.prettier-vscode"
+  ]
 }
