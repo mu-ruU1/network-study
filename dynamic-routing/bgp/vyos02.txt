@@ -1,0 +1,93 @@
+interfaces {
+    dummy dum0 {
+        address 172.16.2.1/24
+    }
+    ethernet eth0 {
+        address 192.168.20.61/24
+    }
+    ethernet eth1 {
+        address 10.10.1.2/24
+    }
+    loopback lo {
+    }
+}
+protocols {
+    bgp {
+        address-family {
+            ipv4-unicast {
+                network 172.16.2.0/24 {
+                }
+            }
+        }
+        neighbor 10.10.1.1 {
+            address-family {
+                ipv4-unicast {
+                }
+            }
+            remote-as 65001
+        }
+        system-as 65002
+    }
+    static {
+        route 0.0.0.0/0 {
+            next-hop 192.168.20.254 {
+            }
+        }
+    }
+}
+service {
+    ntp {
+        allow-client {
+            address 0.0.0.0/0
+            address ::/0
+        }
+        server time1.vyos.net {
+        }
+        server time2.vyos.net {
+        }
+        server time3.vyos.net {
+        }
+    }
+    ssh {
+    }
+}
+system {
+    config-management {
+        commit-revisions 100
+    }
+    conntrack {
+        modules {
+            ftp
+            h323
+            nfs
+            pptp
+            sip
+            sqlnet
+            tftp
+        }
+    }
+    console {
+        device ttyS0 {
+            speed 115200
+        }
+    }
+    host-name vyos
+    login {
+        user vyos {
+            authentication {
+                encrypted-password ****************
+                plaintext-password ****************
+            }
+        }
+    }
+    syslog {
+        global {
+            facility all {
+                level info
+            }
+            facility local7 {
+                level debug
+            }
+        }
+    }
+}

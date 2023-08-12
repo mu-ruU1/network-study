@@ -1,0 +1,11 @@
+conf
+set interfaces dummy dum0 address 172.16.1.1/24
+
+# administratively down
+set interfaces dummy dum0 disable
+
+# show brief
+show interfaces dummy
+
+# show detail
+show interfaces dummy dum0

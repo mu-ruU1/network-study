@@ -1,0 +1,7 @@
+conf
+set interfaces ethernet eth0 address 192.168.20.60/24
+set protocols static route 0.0.0.0/0 next-hop 192.168.20.254
+set service ssh
+
+commit
+save
