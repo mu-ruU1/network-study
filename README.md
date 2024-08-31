@@ -1,1 +1,1 @@
-# network-study
+# study-network
