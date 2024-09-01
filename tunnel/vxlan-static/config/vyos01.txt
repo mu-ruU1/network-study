@@ -1,0 +1,14 @@
+set interfaces bridge br10 member interface eth1
+set interfaces bridge br10 member interface vxlan10
+
+set interfaces ethernet eth2 address '192.168.12.1/24'
+set interfaces ethernet eth2 address '2001:0DB8:12::1/64'
+
+set interfaces loopback lo address '10.1.1.1/32'
+set interfaces loopback lo address '2001:0DB8:1::1/128'
+
+set interfaces vxlan vxlan10 remote '192.168.23.3'
+set interfaces vxlan vxlan10 vni '10010'
+
+set protocols ospf area 0 network '192.168.12.0/24'
+set protocols ospf area 0 network '10.1.1.1/32'
