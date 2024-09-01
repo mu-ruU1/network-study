@@ -1,0 +1,35 @@
+name: evpn-vxlan
+topology:
+  nodes:
+    host01:
+      kind: linux
+      image: muruu1/net-cmd:latest
+      exec:
+        - ip link add link eth1 name eth1.100 type vlan id 100
+        - ip link add link eth1 name eth1.200 type vlan id 200
+        - ip addr add 172.16.0.100/24 dev eth1
+        - ip addr add 172.16.100.100/24 dev eth1.100
+        - ip addr add 172.16.200.100/24 dev eth1.200
+    host02:
+      kind: linux
+      image: muruu1/net-cmd:latest
+      exec:
+        - ip link add link eth1 name eth1.100 type vlan id 100
+        - ip link add link eth1 name eth1.200 type vlan id 200
+        - ip addr add 172.16.0.200/24 dev eth1
+        - ip addr add 172.16.100.200/24 dev eth1.100
+        - ip addr add 172.16.200.200/24 dev eth1.200
+    vyos01:
+      kind: linux
+      image: muruu1/vyos:latest
+    vyos02:
+      kind: linux
+      image: muruu1/vyos:latest
+    vyos03:
+      kind: linux
+      image: muruu1/vyos:latest
+  links:
+    - endpoints: ["host01:eth1", "vyos01:eth1"]
+    - endpoints: ["vyos01:eth2", "vyos02:eth1"]
+    - endpoints: ["vyos02:eth2", "vyos03:eth1"]
+    - endpoints: ["vyos03:eth2", "host02:eth1"]

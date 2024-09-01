@@ -1,0 +1,31 @@
+set interfaces bridge br0 member interface eth1
+set interfaces bridge br0 member interface vxlan0
+set interfaces bridge br100 member interface eth1.100
+set interfaces bridge br100 member interface vxlan100
+set interfaces bridge br200 member interface eth1.200
+set interfaces bridge br200 member interface vxlan200
+
+set interfaces ethernet eth1 vif 100
+set interfaces ethernet eth1 vif 200
+set interfaces ethernet eth2 address '192.168.12.1/24'
+
+set interfaces loopback lo address '10.1.1.1/32'
+
+set interfaces vxlan vxlan0 source-address '10.1.1.1'
+set interfaces vxlan vxlan0 vni '10000'
+set interfaces vxlan vxlan100 source-address '10.1.1.1'
+set interfaces vxlan vxlan100 vni '10100'
+set interfaces vxlan vxlan200 source-address '10.1.1.1'
+set interfaces vxlan vxlan200 vni '10200'
+
+set protocols bgp address-family l2vpn-evpn advertise-all-vni
+set protocols bgp neighbor 10.2.2.2 address-family l2vpn-evpn
+set protocols bgp neighbor 10.2.2.2 ebgp-multihop '255'
+set protocols bgp neighbor 10.2.2.2 remote-as '65002'
+set protocols bgp neighbor 10.2.2.2 update-source '10.1.1.1'
+set protocols bgp system-as '65001'
+set protocols bgp timers holdtime '30'
+set protocols bgp timers keepalive '10'
+
+set protocols ospf area 0 network '192.168.12.0/24'
+set protocols ospf area 0 network '10.1.1.1/32'

@@ -1,0 +1,20 @@
+set interfaces ethernet eth1 address '192.168.12.2/24'
+set interfaces ethernet eth2 address '192.168.23.2/24'
+
+set interfaces loopback lo address '10.2.2.2/32'
+
+set protocols bgp neighbor 10.1.1.1 address-family l2vpn-evpn
+set protocols bgp neighbor 10.1.1.1 ebgp-multihop '255'
+set protocols bgp neighbor 10.1.1.1 remote-as '65001'
+set protocols bgp neighbor 10.1.1.1 update-source '10.2.2.2'
+set protocols bgp neighbor 10.3.3.3 address-family l2vpn-evpn
+set protocols bgp neighbor 10.3.3.3 ebgp-multihop '255'
+set protocols bgp neighbor 10.3.3.3 remote-as '65003'
+set protocols bgp neighbor 10.3.3.3 update-source '10.2.2.2'
+set protocols bgp system-as '65002'
+set protocols bgp timers holdtime '30'
+set protocols bgp timers keepalive '10'
+
+set protocols ospf area 0 network '192.168.12.0/24'
+set protocols ospf area 0 network '192.168.23.0/24'
+set protocols ospf area 0 network '10.2.2.2/32'
