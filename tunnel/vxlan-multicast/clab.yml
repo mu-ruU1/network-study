@@ -1,0 +1,29 @@
+name: vxlan-multicast
+topology:
+  nodes:
+    host01:
+      kind: linux
+      image: muruu1/net-cmd:latest
+      exec:
+        - ip addr add 192.168.100.100/24 dev eth1
+        - ip addr add 2001:0DB8:100::100/64 dev eth1
+    host02:
+      kind: linux
+      image: muruu1/net-cmd:latest
+      exec:
+        - ip addr add 192.168.100.200/24 dev eth1
+        - ip addr add 2001:0DB8:100::200/64 dev eth1
+    vyos01:
+      kind: linux
+      image: muruu1/vyos:latest
+    vyos02:
+      kind: linux
+      image: muruu1/vyos:latest
+    vyos03:
+      kind: linux
+      image: muruu1/vyos:latest
+  links:
+    - endpoints: ["host01:eth1", "vyos01:eth1"]
+    - endpoints: ["vyos01:eth2", "vyos02:eth1"]
+    - endpoints: ["vyos02:eth2", "vyos03:eth1"]
+    - endpoints: ["vyos03:eth2", "host02:eth1"]
